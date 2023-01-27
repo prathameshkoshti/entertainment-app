@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Sidebar from "./components/Sidebar";
+
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    divider: "var(--hr)",
+    text: {
+      primary: "var(--text)",
+    },
+    background: {
+      default: "var(--background)",
+      paper: "var(--paper-background)",
+    },
+  },
+  components: {
+    ListItem: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+    ListItemButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Sidebar />
+      </div>
+    </ThemeProvider>
   );
 }
 

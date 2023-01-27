@@ -1,38 +1,33 @@
-.App {
-  text-align: center;
+:root {
+  --background: #273244;
+  --paper-background: #1F2A3C;
+  --card-color: #394B61;
+  --search-bar-color: #1A2536;
+  --hr: #394B61;
+  --text: #D4D7DD;
+  --primary: #00E0FF;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex-row-center, .flex-column-center {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.flex-column-center {
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiListItemButton-root.ListItemButton .MuiListItemIcon-root {
+  color: var(--text);
+}
+
+.MuiListItemButton-root.ListItemButton.Mui-selected {
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.MuiListItemButton-root.ListItemButton.Mui-selected .MuiListItemIcon-root {
+  color: var(--primary);
 }
