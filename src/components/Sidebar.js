@@ -17,7 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import sidebarItems from "../data/sidebarItems";
 import UserImage from "../assets/images/user.jpg";
 
-const drawerWidth = 240;
+const drawerWidth = 275;
 
 function Sidebar(props) {
   const { window, children } = props;
@@ -50,7 +50,11 @@ function Sidebar(props) {
       </Box>
       {sidebarItems.map((item) => {
         if (item.isDivider) {
-          return <Divider key={item.id} />;
+          return (
+            <Box my={1.5}>
+              <Divider key={item.id} />
+            </Box>
+          );
         } else {
           return (
             <ListItem key={item.id} disablePadding>

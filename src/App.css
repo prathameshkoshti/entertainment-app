@@ -19,13 +19,20 @@
   flex-direction: column;
 }
 
+.MuiListItemButton-root.ListItemButton {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 35px;
+}
 .MuiListItemButton-root.ListItemButton .MuiListItemIcon-root {
   color: var(--text);
+  min-width: 40px;
 }
 
 .MuiListItemButton-root.ListItemButton.Mui-selected {
   background-color: transparent;
   color: var(--primary);
+  border-right: 3px solid var(--primary);
 }
 
 .MuiListItemButton-root.ListItemButton.Mui-selected .MuiListItemIcon-root {
