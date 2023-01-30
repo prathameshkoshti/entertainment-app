@@ -1,6 +1,7 @@
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Sidebar from "./components/Sidebar";
+import Discover from "./containers/Discover";
 
 const theme = createTheme({
   palette: {
@@ -32,7 +33,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Sidebar />
+        <Sidebar>
+          <Discover />
+        </Sidebar>
       </div>
     </ThemeProvider>
   );

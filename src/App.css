@@ -38,3 +38,119 @@
 .MuiListItemButton-root.ListItemButton.Mui-selected .MuiListItemIcon-root {
   color: var(--primary);
 }
+.searchfield {
+  border-bottom: none;
+}
+
+.MuiInputAdornment-root.searchfield::after,
+.MuiInputAdornment-root.searchfield::before {
+  border-bottom: 0;
+}
+
+.searchfield {
+  background-color: var(--search-bar-color);
+  border-radius: 8px;
+  max-width: 500px;
+}
+
+.searchfield input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 21px;
+  flex: 1;
+}
+
+.searchfield>button:disabled {
+  color: white;
+}
+
+.searchfield>.start-adornment {
+  padding: 1rem 1rem 1rem 1.25rem;
+}
+
+.searchfield>.end-adornment {
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.MuiIconButton-root>svg {
+  color: var(--text);
+}
+
+.discovery-toolbar.MuiToolbar-root {
+  padding: 0;
+}
+
+.movies {
+  margin: 3rem 0;
+}
+
+.movie-card {
+  background-color: var(--card-color);
+  border-radius: 0.75rem;
+  margin: 0 1rem 1rem 0;
+  padding: 0.65rem;
+  width: 180px;
+  transition: 0.1s ease-in-out all;
+  cursor: pointer;
+}
+
+.movie-card .movie-poster {
+  width: 160px;
+  height: 190px;
+}
+
+.movie-card .movie-poster img {
+  width: 160px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: calc(0.72rem / 2);
+}
+
+.movie-card .movie-name {
+  margin: 0.75rem 0;
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-card.selected .movie-poster,
+.movie-card .movie-poster img {
+  width: 155px;
+}
+
+.movie-card.selected {
+  border: 3px solid var(--primary);
+}
+
+@media screen and (max-width: 480px) {
+  .searchfield {
+    max-width: 280px;
+  }
+
+  .searchfield input {
+    font-size: 0.85rem;
+  }
+
+  .movie-card {
+    width: 160px;
+    margin: 0 0.65rem 1rem 0;
+  }
+
+  .movie-card .movie-poster,
+  .movie-card .movie-poster img {
+    width: 140px;
+    height: 170px;
+  }
+
+  .movie-card .movie-name {
+    width: 140px;
+  }
+
+  .movie-card.selected .movie-poster,
+  .movie-card .movie-poster img {
+    width: 135px;
+  }
+}

@@ -49,27 +49,23 @@ function Sidebar(props) {
         </Typography>
       </Box>
       {sidebarItems.map((item) => {
-        if (item.isDivider) {
-          return (
-            <Box my={1.5}>
-              <Divider key={item.id} />
-            </Box>
-          );
-        } else {
-          return (
-            <ListItem key={item.id} disablePadding>
-              <ListItemButton
-                className="ListItemButton"
-                selected={item.id === activeElementId}
-              >
-                <ListItemIcon>
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText primary={item.label} />
-              </ListItemButton>
-            </ListItem>
-          );
-        }
+        return (
+          <Box my={item.isDivider ? 1.5 : 0} key={item.id}>
+            {item.isDivider ? (
+              <Divider />
+            ) : (
+              <ListItem key={item.id} disablePadding>
+                <ListItemButton
+                  className="ListItemButton"
+                  selected={item.id === activeElementId}
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              </ListItem>
+            )}
+          </Box>
+        );
       })}
     </div>
   );
