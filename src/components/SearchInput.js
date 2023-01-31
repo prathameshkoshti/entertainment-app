@@ -1,6 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IconButton, Box } from "@mui/material";
 
 export default function SearchInput({ searchMovies }) {
@@ -17,7 +17,7 @@ export default function SearchInput({ searchMovies }) {
 
   const handleSearch = (event) => {
     setSearchText(event.target.value);
-    searchMovies(searchText);
+    searchMovies(event.target.value);
   };
 
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Movie from "./Movie";
 
 export default function Movies({ movies }) {
@@ -14,7 +14,7 @@ export default function Movies({ movies }) {
 
   const onWindowResize = useCallback(() => {
     // get width of movies list container and accordingly get items per row
-    if (movieContainer && movieContainer.current && movies.length) {
+    if (movieContainer && movieContainer.current) {
       const width = movieContainer.current.clientWidth;
       if (width <= 480) {
         setItemWidth(160);
@@ -23,7 +23,7 @@ export default function Movies({ movies }) {
     } else {
       setItemsPerRow(0);
     }
-  }, [movies.length]);
+  }, []);
   useEffect(() => {
     window.addEventListener("resize", onWindowResize);
 
@@ -38,7 +38,7 @@ export default function Movies({ movies }) {
 
   useEffect(() => {
     onWindowResize();
-  }, [movies.length, onWindowResize]);
+  }, [onWindowResize]);
 
   const selectMovie = (chunkIndex, movieIndex) => {
     setSelectedPartition(chunkIndex);
@@ -61,28 +61,32 @@ export default function Movies({ movies }) {
 
   return (
     <Box className="movies" ref={movieContainer}>
-      {movieChunks.map((chunk, chunkIndex) => {
-        return (
-          <Box key={`chunk_${chunkIndex}`}>
-            <div className={`desc-placeholder-${chunkIndex}`}></div>
-            <Box display="flex" flexWrap="wrap" className="movies-row" >
-              {chunk.map((movie, index) => (
-                <Movie
-                  chunkIndex={chunkIndex}
-                  movie={movie}
-                  index={index}
-                  key={`Movie_${index}`}
-                  selectMovie={selectMovie}
-                  isSelected={
-                    selectedMovieIndex === index &&
-                    selectedPartition === chunkIndex
-                  }
-                />
-              ))}
+      {movieChunks.length ? (
+        movieChunks.map((chunk, chunkIndex) => {
+          return (
+            <Box key={`chunk_${chunkIndex}`}>
+              <div className={`desc-placeholder-${chunkIndex}`}></div>
+              <Box display="flex" flexWrap="wrap" className="movies-row">
+                {chunk.map((movie, index) => (
+                  <Movie
+                    chunkIndex={chunkIndex}
+                    movie={movie}
+                    index={index}
+                    key={`Movie_${index}`}
+                    selectMovie={selectMovie}
+                    isSelected={
+                      selectedMovieIndex === index &&
+                      selectedPartition === chunkIndex
+                    }
+                  />
+                ))}
+              </Box>
             </Box>
-          </Box>
-        );
-      })}
+          );
+        })
+      ) : (
+        <Typography variant="h6">No result found for your search.</Typography>
+      )}
     </Box>
   );
 }

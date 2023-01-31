@@ -21,11 +21,7 @@ export default function Discover() {
       const filteredMovies = movies.filter((movie) => {
         return movie.Title.toLowerCase().includes(searchKeywords);
       });
-      if (filteredMovies.length) {
-        setFilteredMovies(filteredMovies);
-      } else {
-        
-      }
+      setFilteredMovies(filteredMovies);
     } else {
       setFilteredMovies(movies);
     }
