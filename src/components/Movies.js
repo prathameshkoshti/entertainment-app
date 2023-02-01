@@ -6,7 +6,7 @@ import MovieDesc from "./MovieDesc";
 export default function Movies({ movies }) {
   const [itemsPerRow, setItemsPerRow] = useState(4);
   const [movieChunks, setMovieChunks] = useState([]);
-  const [itemWidth, setItemWidth] = useState(200);
+  const [itemWidth, setItemWidth] = useState(180);
   const [containerWidth, setContainerWidth] = useState(0);
   const movieContainer = useRef(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -19,6 +19,8 @@ export default function Movies({ movies }) {
       const width = movieContainer.current.clientWidth;
       if (width <= 480) {
         setItemWidth(160);
+      } else {
+        setItemWidth(180);
       }
       setContainerWidth(width);
     } else {
@@ -34,7 +36,7 @@ export default function Movies({ movies }) {
   }, [onWindowResize]);
 
   useEffect(() => {
-    setItemsPerRow(parseInt(containerWidth / itemWidth));
+    setItemsPerRow(parseInt(containerWidth / (itemWidth + 32)));
   }, [containerWidth, itemWidth]);
 
   useEffect(() => {
@@ -81,6 +83,7 @@ export default function Movies({ movies }) {
                   <MovieDesc
                     movie={selectedMovie}
                     closeDescription={closeDescription}
+                    width={itemWidth * itemsPerRow + (itemsPerRow - 1) * 16}
                   />
                 ) : null}
               </div>
