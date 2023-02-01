@@ -57,10 +57,17 @@
   top: 0.5rem;
 }
 
+.search-container {
+  max-width: 500px;
+}
+
 .searchfield {
   background-color: var(--search-bar-color);
   border-radius: 8px;
-  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .searchfield input {

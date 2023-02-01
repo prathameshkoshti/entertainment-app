@@ -34,6 +34,7 @@ export default function SearchInput({ searchMovies }) {
       </Box>
       <motion.div
         initial={{ opacity: 0, scaleX: 0, originX: 0 }}
+        className="searchfield"
         animate={
           searchbarVisible
             ? { opacity: 1, scaleX: 1, originX: 0 }
@@ -41,21 +42,14 @@ export default function SearchInput({ searchMovies }) {
         }
         transition={{ duration: 0.3 }}
       >
-        <Box
-          sx={{ width: "100%" }}
-          display="flex"
-          alignItems="center"
-          className="searchfield"
+        <input type="text" onChange={handleSearch} value={searchText} />
+        <IconButton
+          aria-label="toggle password visibility"
+          onClick={hideSearchbar}
+          className="end-adornment"
         >
-          <input type="text" onChange={handleSearch} value={searchText} />
-          <IconButton
-            aria-label="toggle password visibility"
-            onClick={hideSearchbar}
-            className="end-adornment"
-          >
-            <CloseIcon />
-          </IconButton>
-        </Box>
+          <CloseIcon />
+        </IconButton>
       </motion.div>
     </Box>
   );
