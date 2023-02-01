@@ -42,9 +42,19 @@ export default function Movies({ movies }) {
   }, [onWindowResize]);
 
   const selectMovie = (chunkIndex, movieIndex) => {
-    setSelectedPartition(chunkIndex);
-    setMovieIndex(movieIndex);
-    setSelectedMovie(movieChunks[chunkIndex][movieIndex]);
+    if (chunkIndex === selectedPartition && movieIndex === selectedMovieIndex) {
+      closeDescription();
+    } else {
+      setSelectedPartition(chunkIndex);
+      setMovieIndex(movieIndex);
+      setSelectedMovie(movieChunks[chunkIndex][movieIndex]);
+    }
+  };
+
+  const closeDescription = () => {
+    setSelectedPartition(null);
+    setMovieIndex(null);
+    setSelectedMovie(null);
   };
 
   useEffect(() => {
@@ -68,7 +78,10 @@ export default function Movies({ movies }) {
             <Box key={`chunk_${chunkIndex}`}>
               <div className={`desc-placeholder-${chunkIndex}`}>
                 {selectedMovie !== null && chunkIndex === selectedPartition ? (
-                  <MovieDesc movie={selectedMovie} />
+                  <MovieDesc
+                    movie={selectedMovie}
+                    closeDescription={closeDescription}
+                  />
                 ) : null}
               </div>
               <Box display="flex" flexWrap="wrap" className="movies-row">
