@@ -2,6 +2,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { IconButton, Box } from "@mui/material";
+import { motion } from "framer-motion";
 
 export default function SearchInput({ searchMovies }) {
   const [searchbarVisible, setSearchbarVisible] = useState(false);
@@ -21,23 +22,32 @@ export default function SearchInput({ searchMovies }) {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      {!searchbarVisible && (
-        <IconButton onClick={showSearchbar}>
+    <Box sx={{ width: "100%" }} display="flex" className="search-container">
+      <Box className="search-button">
+        <IconButton
+          className="start-adornment"
+          onClick={showSearchbar}
+          disabled={searchbarVisible}
+        >
           <SearchIcon />
-        </IconButton> 
-      )}
-      {searchbarVisible && (
+        </IconButton>
+      </Box>
+      <motion.div
+        initial={{ opacity: 0, scaleX: 0, originX: 0 }}
+        animate={
+          searchbarVisible
+            ? { opacity: 1, scaleX: 1, originX: 0 }
+            : { opacity: 0, scaleX: 0, originX: 0 }
+        }
+        transition={{ duration: 0.3 }}
+      >
         <Box
           sx={{ width: "100%" }}
           display="flex"
           alignItems="center"
           className="searchfield"
         >
-          <IconButton className="start-adornment" disabled>
-            <SearchIcon />
-          </IconButton>
-          <input type="text" onChange={handleSearch} value={searchText}/>
+          <input type="text" onChange={handleSearch} value={searchText} />
           <IconButton
             aria-label="toggle password visibility"
             onClick={hideSearchbar}
@@ -46,7 +56,7 @@ export default function SearchInput({ searchMovies }) {
             <CloseIcon />
           </IconButton>
         </Box>
-      )}
+      </motion.div>
     </Box>
   );
 }

@@ -47,6 +47,16 @@
   border-bottom: 0;
 }
 
+.search-container {
+  position: relative;
+}
+
+.search-button {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
 .searchfield {
   background-color: var(--search-bar-color);
   border-radius: 8px;
@@ -60,6 +70,7 @@
   color: var(--text);
   font-size: 21px;
   flex: 1;
+  padding-left: 3.5rem;
 }
 
 .searchfield>button:disabled {
