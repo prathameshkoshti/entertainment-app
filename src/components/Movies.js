@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Box, Typography } from "@mui/material";
 import Movie from "./Movie";
+import MovieDesc from "./MovieDesc";
 
 export default function Movies({ movies }) {
   const [itemsPerRow, setItemsPerRow] = useState(4);
@@ -65,7 +66,11 @@ export default function Movies({ movies }) {
         movieChunks.map((chunk, chunkIndex) => {
           return (
             <Box key={`chunk_${chunkIndex}`}>
-              <div className={`desc-placeholder-${chunkIndex}`}></div>
+              <div className={`desc-placeholder-${chunkIndex}`}>
+                {selectedMovie !== null && chunkIndex === selectedPartition ? (
+                  <MovieDesc movie={selectedMovie} />
+                ) : null}
+              </div>
               <Box display="flex" flexWrap="wrap" className="movies-row">
                 {chunk.map((movie, index) => (
                   <Movie

@@ -25,7 +25,7 @@ export default function SearchInput({ searchMovies }) {
       {!searchbarVisible && (
         <IconButton onClick={showSearchbar}>
           <SearchIcon />
-        </IconButton>
+        </IconButton> 
       )}
       {searchbarVisible && (
         <Box
