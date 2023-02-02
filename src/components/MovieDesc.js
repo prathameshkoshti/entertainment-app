@@ -1,20 +1,13 @@
 import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, IconButton } from "@mui/material";
 import React from "react";
 import Button from "./Button";
 import { motion } from "framer-motion";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function MovieDesc({ movie, closeDescription, width }) {
   return (
-    <Box
-      className="movie-desc-wrapper"
-      component={motion.div}
-      initial={{ opacity: 0, scaleY: 0 }}
-      animate={{ opacity: 1, scaleY: 1 }}
-      transition={{
-        duration: 0.4,
-      }}
-    >
+    <Box className="movie-desc-wrapper">
       <Box
         className="movie-description"
         width={width}
@@ -25,6 +18,11 @@ export default function MovieDesc({ movie, closeDescription, width }) {
           duration: 0.4,
         }}
       >
+        <Box className="close-desc">
+          <IconButton className="start-adornment" onClick={closeDescription}>
+            <CloseIcon />
+          </IconButton>
+        </Box>
         <Box className="movie-poster">
           <img src={movie.Poster} alt={movie.Title} />
         </Box>
@@ -52,7 +50,7 @@ export default function MovieDesc({ movie, closeDescription, width }) {
               <Box
                 component={motion.div}
                 className="rating-indicator"
-                width={movie.imdbRating / 10}
+                width={movie.imdbRating > 0 ? movie.imdbRating / 10 : 0}
                 initial={{ scaleX: 0, originX: 0 }}
                 animate={{ scaleX: 1, originX: 0 }}
                 transition={{ duration: 0.6, delay: 0.7 }}

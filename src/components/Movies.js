@@ -21,9 +21,9 @@ export default function Movies({ movies }) {
         setItemWidth(180);
       } else if (width <= 779 && width > 710) {
         setItemWidth(220);
-      } else if (width <= 710) {
+      } else if (width <= 710 && width > 480) {
         setItemWidth(210);
-      } else if (width < 480) {
+      } else if (width <= 480) {
         setItemWidth(160);
       }
       setContainerWidth(width);
@@ -87,7 +87,11 @@ export default function Movies({ movies }) {
                   <MovieDesc
                     movie={selectedMovie}
                     closeDescription={closeDescription}
-                    width={itemWidth * itemsPerRow + (itemsPerRow - 1) * 16}
+                    width={
+                      containerWidth > 480
+                        ? itemWidth * itemsPerRow + (itemsPerRow - 1) * 16
+                        : "80%"
+                    }
                   />
                 ) : null}
               </div>

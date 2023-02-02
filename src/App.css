@@ -152,7 +152,7 @@
 
 .movie-attr {
   display: grid;
-  grid-template-columns: repeat(2, 150px);
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
   grid-template-rows: 1fr;
 }
 
@@ -213,6 +213,7 @@
   max-height: 80px;
   overflow-y: auto;
 }
+
 .rating-indicator {
   height: 8px;
   border-radius: 4px;
@@ -221,35 +222,11 @@
   right: 0;
   background-color: var(--primary);
 }
-@media screen and (max-width: 480px) {
-  .searchfield {
-    max-width: 280px;
-  }
 
-  .searchfield input {
-    font-size: 0.85rem;
-  }
-
-  .movie-card {
-    width: 160px;
-    margin: 0 0.65rem 1rem 0;
-  }
-
-  .movie-card .movie-poster,
-  .movie-card .movie-poster img {
-    width: 140px;
-    height: 170px;
-  }
-
-  .movie-card .movie-name {
-    width: 140px;
-  }
-
-  .movie-card.selected .movie-poster,
-  .movie-card .movie-poster img {
-    width: 135px;
-  }
+.close-desc {
+  display: none;
 }
+
 @media screen and (max-width: 1100px) {
   .movie-card {
     width: 220px;
@@ -277,4 +254,94 @@
   .movie-card.selected .movie-poster img {
     width: 185px;
   }
+}
+
+@media screen and (max-width: 600px) {
+  .movie-desc-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+
+  .movie-desc-wrapper:after {
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000AA;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  .movie-description {
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    translate: -50% 20%;
+    flex-direction: column;
+  }
+
+  .movie-description {
+    height: auto;
+  }
+
+  .movie-card.selected .movie-poster img {
+    width: 135px;
+  }
+
+  .movie-description .movie-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movie-description .movie-poster img {
+    width: 140px;
+    margin-top: 2rem;
+  }
+
+  .movie-details>*:not(.movie-synopsis, .movie-attr) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .close-desc {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .searchfield {
+    max-width: 280px;
+  }
+
+  .searchfield input {
+    font-size: 0.85rem;
+  }
+
+  .movie-card {
+    width: 160px;
+    margin: 0 0.65rem 1rem 0;
+    height: 270px;
+  }
+
+  .movie-card .movie-poster,
+  .movie-card .movie-poster img {
+    width: 140px;
+    height: 170px;
+  }
+
+  .movie-card .movie-name {
+    width: 140px;
+  }
+
+  .movie-card.selected .movie-poster,.movie-card .movie-poster img {
+    width: 135px;
+  }
+
+
 }
