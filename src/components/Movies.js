@@ -17,10 +17,14 @@ export default function Movies({ movies }) {
     // get width of movies list container and accordingly get items per row
     if (movieContainer && movieContainer.current) {
       const width = movieContainer.current.clientWidth;
-      if (width <= 480) {
-        setItemWidth(160);
-      } else {
+      if (width > 779) {
         setItemWidth(180);
+      } else if (width <= 779 && width > 710) {
+        setItemWidth(220);
+      } else if (width <= 710) {
+        setItemWidth(210);
+      } else if (width < 480) {
+        setItemWidth(160);
       }
       setContainerWidth(width);
     } else {
@@ -36,7 +40,7 @@ export default function Movies({ movies }) {
   }, [onWindowResize]);
 
   useEffect(() => {
-    setItemsPerRow(parseInt(containerWidth / (itemWidth + 32)));
+    setItemsPerRow(parseInt(containerWidth / (itemWidth + 16)));
   }, [containerWidth, itemWidth]);
 
   useEffect(() => {

@@ -17,7 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import sidebarItems from "../data/sidebarItems";
 import UserImage from "../assets/images/user.jpg";
 
-const drawerWidth = 275;
+const drawerWidth = 225;
 
 function Sidebar(props) {
   const { window, children } = props;
